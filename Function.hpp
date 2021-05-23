@@ -16,7 +16,7 @@ namespace Functions
 int Functions::UnlockModule(DWORD rL)
 {
 	DWORD Module = *(DWORD*)r_lua_touserdata(rL, -1);
-	r_lua_xmove(rL, RBLX->rL, 1);
+	r_lua_xmove(rL, RBLX->rL, 1); // EDIT You need to move from the function thread -> your roblox state your running on. 
 
 	*(DWORD*)(Module + 240) = 1;
 
